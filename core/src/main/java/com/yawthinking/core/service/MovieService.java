@@ -40,6 +40,7 @@ public class MovieService {
 
     @Transactional(readOnly = true)
     public Optional<Movie> findById(long id) {
+        System.out.println("call MovieService findById");
         return movieMapper.findById(id);
     }
 
