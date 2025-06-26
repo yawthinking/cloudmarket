@@ -1,0 +1,64 @@
+mybatis:
+  type-aliases-package: com.yawthinking.core.domain
+  mapper-locations: 'classpath:mappers/*.xml'
+
+pagehelper:
+  helperDialect: postgresql
+  reasonable: false
+  defaultCount: true
+
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: always
+  port: 8080
+  servlet:
+    context-path: /portal
+    context-parameters:
+      defaultHtmlEscape: true
+    encoding:
+      enabled: true
+      charset: "UTF-8"
+      force: true
+      force-request: true
+      force-response: true
+
+spring:
+  application:
+    name: portal
+
+  datasource:
+    name: portal
+    url: jdbc:postgresql://127.0.0.1:5432/example
+    username: postgres_user
+    password: p@ssw0rd
+    hikari:
+      pool-name: PortalHikariCP
+      auto-commit: false
+      maximum-pool-size: 16
+      max-lifetime: 2700000
+      connection-timeout: 60000
+      keepalive-time: 60000
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+
+  devtools:
+    add-properties: false
+    remote:
+      restart:
+        enabled: false
+
+  mvc:
+    locale: zh_TW
+    log-resolved-exception: true
+    static-path-pattern: /static/**
+    webjars-path-pattern: /webjars/**
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+
+webapp:
+  version: 0.0.2

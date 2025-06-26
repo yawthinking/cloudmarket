@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yawthinking.core.domain.ActorMapper">
+
+    <select id="findById" parameterType="long" resultType="actor">
+        SELECT id, name, sex, born FROM actors WHERE id = #{id}
+    </select>
+
+    <insert id="save" parameterType="actor">
+        INSERT INTO actors (id, name, sex, born)
+        VALUES (#{id}, #{name}, #{sex}, #{born})
+    </insert>
+
+</mapper>

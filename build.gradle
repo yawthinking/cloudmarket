@@ -1,0 +1,26 @@
+plugins {
+	id 'java'
+}
+
+group = 'com.yawthinking'
+version = '0.0.1'
+
+subprojects {
+	apply plugin: 'java'
+
+	java {
+		toolchain {
+			languageVersion = JavaLanguageVersion.of(17)
+		}
+	}
+
+	repositories {
+		mavenCentral()
+	}
+
+	tasks.withType(JavaCompile).configureEach {
+		options.encoding = 'UTF-8'
+		options.compilerArgs += '-parameters'
+	}
+
+}

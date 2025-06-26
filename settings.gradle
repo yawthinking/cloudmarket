@@ -1,0 +1,5 @@
+rootProject.name = 'cloudmarket'
+
+include('core')
+include('webapi')
+include('webapp')
