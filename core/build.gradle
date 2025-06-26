@@ -15,6 +15,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.4'
     implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:2.1.1'
+    implementation 'org.javassist:javassist:3.30.2-GA'
     implementation 'org.apache.commons:commons-lang3:3.17.0'
     implementation 'commons-codec:commons-codec:1.18.0'
     implementation 'commons-io:commons-io:2.19.0'
