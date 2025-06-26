@@ -13,7 +13,7 @@
         <result column="photo" property="photo" />
         <result column="createDate" property="createDate" />
         <collection property="positions" javaType="list" ofType="position" column="id"
-                    select="com.yawthinking.core.domain.PositionMapper.findByMovieId" />
+                    select="change" />
     </resultMap>
 
     <select id="findById" parameterType="long" resultMap="movieMap">
