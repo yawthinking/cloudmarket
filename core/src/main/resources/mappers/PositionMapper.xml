@@ -7,9 +7,10 @@
 
     <resultMap id="positionMap" type="position">
         <result column="name" property="name" />
-        <result column="movieId" property="movieId" />
         <association property="actor" javaType="actor" column="actorId"
                      select="com.yawthinking.core.domain.ActorMapper.findById" />
+        <association property="movie" javaType="movie" column="movieId"
+                     select="com.yawthinking.core.domain.MovieMapper.findById" />
     </resultMap>
 
     <select id="findById" resultMap="positionMap">

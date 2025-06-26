@@ -12,12 +12,20 @@
         <result column="name" property="name" />
         <result column="photo" property="photo" />
         <result column="createDate" property="createDate" />
-        <collection property="positions" javaType="list" ofType="position" column="id"
-                    select="com.yawthinking.core.domain.PositionMapper.findByMovieId" />
+        <collection property="positions" javaType="list" ofType="position">
+            <result column="pname" property="name" />
+            <association property="actor" javaType="actor" column="actorId"
+                         select="com.yawthinking.core.domain.ActorMapper.findById" />
+            <association property="movie" javaType="movie" column="movieId"
+                         select="com.yawthinking.core.domain.MovieMapper.findById" />
+        </collection>
     </resultMap>
 
     <select id="findById" parameterType="long" resultMap="movieMap">
-        SELECT id, name, photo, createDate FROM movies WHERE id = #{id}
+        SELECT m.id AS id, m.name AS name, m.photo AS photo, m.createDate AS createDate,
+               p.name AS pname, p.movieId AS movieId, p.actorId AS actorId
+        FROM movies AS m INNER JOIN positions AS p ON m.id = p.movieId
+        WHERE m.id = #{id}
     </select>
 
     <insert id="save" parameterType="movie">

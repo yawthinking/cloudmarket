@@ -4,8 +4,6 @@ import org.apache.ibatis.type.Alias;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.StringJoiner;
 
 @Alias("position")
 public class Position implements Serializable {
@@ -15,7 +13,7 @@ public class Position implements Serializable {
 
     private String name;
     private Actor actor;
-    private Long movieId;
+    private Movie movie;
 
     public Position() {
         super();
@@ -23,7 +21,7 @@ public class Position implements Serializable {
 
     public Position(Actor actor, Movie movie, String name) {
         this.actor = actor;
-        this.movieId = movie.getId();
+        this.movie = movie;
         this.name = name;
     }
 
@@ -43,32 +41,12 @@ public class Position implements Serializable {
         this.actor = actor;
     }
 
-    public Long getMovieId() {
-        return movieId;
+    public Movie getMovie() {
+        return movie;
     }
 
-    public void setMovieId(Long movieId) {
-        this.movieId = movieId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (!(o instanceof Position position)) return false;
-        return Objects.equals(actor, position.actor) && Objects.equals(movieId, position.movieId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(actor, movieId);
-    }
-
-    @Override
-    public String toString() {
-        return new StringJoiner(", ", Position.class.getSimpleName() + "[", "]")
-                .add("name='" + name + "'")
-                .add("actor=" + actor)
-                .add("movieId=" + movieId)
-                .toString();
+    public void setMovie(Movie movie) {
+        this.movie = movie;
     }
 
 }
